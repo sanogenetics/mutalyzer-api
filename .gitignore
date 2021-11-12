@@ -1,0 +1,14 @@
+bin/
+dist/
+lib/
+lib64
+pip-selfcheck.json
+pyvenv.cfg
+share/
+__pycache__/
+
+normalizer.egg-info/
+normalizer/__pycache__/
+
+tests/data/*.json
+apis
