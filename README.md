@@ -19,6 +19,6 @@ Populate the cache.
 
 Start the backend.
 
-    MUTALYZER_SETTINGS="$(pwd)/config.txt" mutalyzer-api
+    MUTALYZER_SETTINGS="$(pwd)/config.txt" mutalyzer_api
 
 Navigate to `http://localhost:5000/api` to interact with the API.
