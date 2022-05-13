@@ -13,7 +13,7 @@ class GetSelectors(Resource):
     @errors
     def get(self, reference_id):
         """Retrieve available selectors for the provided reference."""
-        reference_model = retrieve_reference(reference_id)
+        reference_model = retrieve_reference(reference_id)[0]
         if reference_model:
             selectors = get_selectors_ids(reference_model["annotations"])
             return {"reference": reference_id, "selectors": selectors}
