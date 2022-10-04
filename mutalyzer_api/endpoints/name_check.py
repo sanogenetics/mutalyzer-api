@@ -1,6 +1,7 @@
 from flask_restx import Namespace, Resource, inputs, reqparse
 
-from mutalyzer.name_checker import name_check, name_check_alt
+from mutalyzer.name_checker import name_check
+from mutalyzer.normalizer import normalize_alt
 
 from .common import errors
 
@@ -34,10 +35,10 @@ class NameCheck(Resource):
         return name_check(description, **_args.parse_args())
 
 
-@ns.route("/name_check_alt/<string:description>")
-class NameCheckAlt(Resource):
+@ns.route("/normalize_alt/<string:description>")
+class NormalizeAlt(Resource):
     @ns.expect(_args)
     @errors
     def get(self, description):
         """Normalize a variant description."""
-        return name_check_alt(description, **_args.parse_args())
+        return normalize_alt(description, **_args.parse_args())
