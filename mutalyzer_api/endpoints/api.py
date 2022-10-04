@@ -11,7 +11,7 @@ from .description_to_model import ns as ns_description_to_mdel
 from .get_selectors import ns as ns_get_selectors
 from .map import ns as ns_map
 from .mutate import ns as ns_mutate
-from .name_check import ns as ns_name_check
+from .normalize import ns as ns_normalize
 from .position_convert import ns as ns_position_convert
 from .reference_model import ns as ns_reference_model
 from .related_references import ns as ns_related_references
@@ -46,7 +46,7 @@ api = PatchedApi(blueprint, version="1.0", title="Mutalyzer3 API")
 api.add_namespace(ns_compare)
 api.add_namespace(ns_map)
 api.add_namespace(ns_mutate)
-api.add_namespace(ns_name_check)
+api.add_namespace(ns_normalize)
 api.add_namespace(ns_description_to_mdel)
 api.add_namespace(ns_reference_model)
 api.add_namespace(ns_related_references)
