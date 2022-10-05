@@ -1,7 +1,7 @@
 import logging
 
 from flask import Blueprint, url_for
-from flask_restx import Api, apidoc
+from flask_restx import Api, apidoc, Namespace, Resource
 
 from mutalyzer.util import log_dir
 from .back_translate import ns as ns_back_translate
@@ -18,7 +18,12 @@ from .related_references import ns as ns_related_references
 from .spdi_converter import ns as ns_spdi_converter
 from .view_variants import ns as ns_view_variants
 
+from pkg_resources import get_distribution
+
+
 logging.basicConfig(level=logging.INFO, filename=log_dir())
+
+API_VERSION = "2.0"
 
 
 # Trick to make the swagger files available under "/api".
@@ -41,7 +46,17 @@ class PatchedApi(Api):
 
 blueprint = Blueprint("api", __name__)
 
-api = PatchedApi(blueprint, version="1.0", title="Mutalyzer3 API")
+api = PatchedApi(blueprint, version=API_VERSION, title="Mutalyzer3 API")
+
+ns_version = Namespace("/")
+
+
+@ns_version.route("/version")
+class Version(Resource):
+    def get(self):
+        """Get versions."""
+        return {"mutalyzer": get_distribution("mutalyzer").version, "api": API_VERSION}
+
 
 api.add_namespace(ns_compare)
 api.add_namespace(ns_map)
@@ -56,3 +71,4 @@ api.add_namespace(ns_get_selectors)
 api.add_namespace(ns_view_variants)
 api.add_namespace(ns_spdi_converter)
 api.add_namespace(ns_back_translate)
+api.add_namespace(ns_version)

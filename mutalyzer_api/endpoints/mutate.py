@@ -1,4 +1,4 @@
-from flask_restx import Namespace, Resource, reqparse
+from flask_restx import Namespace, Resource, api
 
 from mutalyzer.mutator import mutate
 
@@ -9,6 +9,7 @@ ns = Namespace("/")
 
 @ns.route("/mutate/<string:description>")
 class Mutate(Resource):
+    @errors
     def get(self, description):
         """Obtain the observed sequence from a description."""
         return mutate(description)

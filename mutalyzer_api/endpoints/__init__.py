@@ -11,5 +11,6 @@ app.config.SWAGGER_UI_DOC_EXPANSION = "list"
 
 CORS(app, resources={r"/*": {"origins": "*"}})
 
+
 def app_run():
     app.run(debug=True)
