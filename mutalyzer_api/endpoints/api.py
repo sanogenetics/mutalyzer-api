@@ -23,7 +23,7 @@ from pkg_resources import get_distribution
 
 logging.basicConfig(level=logging.INFO, filename=log_dir())
 
-API_VERSION = "2.0"
+API_VERSION = "2.1"
 
 
 # Trick to make the swagger files available under "/api".
