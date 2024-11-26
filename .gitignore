@@ -7,8 +7,11 @@ pyvenv.cfg
 share/
 __pycache__/
 
-normalizer.egg-info/
-normalizer/__pycache__/
+*.egg-info/
+*/__pycache__/
 
 tests/data/*.json
 apis
+
+*venv*
+.mypy_cache/
